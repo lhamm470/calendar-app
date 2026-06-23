@@ -1,0 +1,189 @@
+:root {
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+  
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+
+  /* Custom colour scheme - dark*/
+
+  /* Background colour */
+  --bg-1: hsl(0, 0%, 5%);
+  --bg-2: hsl(0, 0%, 10%);
+  --bg-3: hsl(0, 0%, 15%);
+  --bg-4: hsl(0, 0%, 20%);
+  --bg-5: hsl(0, 0%, 25%);
+  --bg-6: hsl(0, 0%, 30%);
+  --bg-7: hsl(0, 0%, 35%);
+  --bg-8: hsl(0, 0%, 40%);
+  --bg-9: hsl(0, 0%, 45%);
+  --bg-10: hsl(0, 0%, 50%);
+
+  /* Text colour */
+  --text: hsl(0, 0%, 95%);
+  --text-muted-1: hsl(0, 0%, 90%);
+  --text-muted-2: hsl(0, 0%, 85%);
+  --text-muted-3: hsl(0, 0%, 80%);
+  --text-muted-4: hsl(0, 0%, 75%);
+  --text-muted-5: hsl(0, 0%, 70%);
+  --text-muted-6: hsl(0, 0%, 65%);
+  --text-muted-7: hsl(0, 0%, 60%);
+  --text-muted-8: hsl(0, 0%, 55%);
+
+  --slider-circle: white;
+
+  /* Authentication button colours */
+  --login-button: hsl(145, 65%, 45%);
+  --login-button-hover: hsl(145, 65%, 50%);
+  --login-button-active: hsl(145, 65%, 38%);
+
+  --logout-button: hsl(0, 70%, 55%);
+  --logout-button-hover: hsl(0, 70%, 62%);
+  --logout-button-active: hsl(0, 70%, 45%);
+
+  /* Constant colours */
+
+
+  
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media (max-width: 640px) {
+    font-size: 12px;
+  }
+  @media (max-width: 480px) {
+    font-size: 9px;
+  }
+}
+
+/* Custom colour scheme - light*/
+[data-theme="light"] {
+  /* Background colour */
+  --bg-1: hsl(0, 0%, 55%);
+  --bg-2: hsl(0, 0%, 60%);
+  --bg-3: hsl(0, 0%, 65%);
+  --bg-4: hsl(0, 0%, 70%);
+  --bg-5: hsl(0, 0%, 75%);
+  --bg-6: hsl(0, 0%, 80%);
+  --bg-7: hsl(0, 0%, 85%);
+  --bg-8: hsl(0, 0%, 90%);
+  --bg-9: hsl(0, 0%, 95%);
+  --bg-10: hsl(0, 0%, 100%);
+  
+  /* Text colour  */
+  --text: hsl(0, 0%, 10%);
+  --text-muted-1: hsl(0, 0%, 15%);
+  --text-muted-2: hsl(0, 0%, 20%);
+  --text-muted-3: hsl(0, 0%, 25%);
+  --text-muted-4: hsl(0, 0%, 30%);
+  --text-muted-5: hsl(0, 0%, 35%);
+  --text-muted-6: hsl(0, 0%, 40%);
+  --text-muted-7: hsl(0, 0%, 45%);
+  --text-muted-8: hsl(0, 0%, 50%);
+
+  --slider-circle: hsl(0, 0%, 30%);
+}
+
+main {
+  margin-top: 100px;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-1); /* Todo add text colours*/
+  color: var(--text);
+}
+
+
+
+@media (max-width: 1024px) {
+  .main-navbar {
+    padding: 0 1rem;
+  }
+  
+  .nav-links {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .main-navbar {
+    padding: 0 0.8rem;
+  }
+  
+  .nav-links {
+    gap: 1.6rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .main-navbar {
+    padding: 0 0.3rem;
+  }
+  
+  .nav-links {
+    gap: 0.8rem;
+  }
+}

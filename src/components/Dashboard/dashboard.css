@@ -1,0 +1,36 @@
+.calendar-navbar {
+  background-color: var(--bg-6);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.month-button {
+  height: 50%;
+}
+
+.calendar-days-of-week,
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+  width: 100%;
+  padding: 1%;
+}
+
+.calendar-days-of-week {
+  background-color: var(--bg-6);
+  height: 10px;
+  align-content: center;
+}
+
+.day-of-week {
+}
+
+.calendar {
+  background-color: var(--bg-4);
+  margin-bottom: 200px;
+  scrollbar-width: none;
+}

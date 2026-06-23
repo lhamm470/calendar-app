@@ -1,0 +1,35 @@
+.day-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+  border-radius: 0.6rem;
+  min-width: 0;
+}
+
+.current-month {
+  background-color: var(--bg-7);
+  color: var(--text);
+}
+
+.adjacent-month {
+  background-color: var(--bg-6);
+  color: var(--text-muted-3);
+}
+
+.current-date {
+  background-color: blue;
+  color: black;
+  border-radius: 9999px;
+}
+
+.day-card-date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.3rem;
+  padding: 0.1rem;
+  width: auto;
+
+  align-self: flex-start;
+  aspect-ratio: 1 / 1;
+}
