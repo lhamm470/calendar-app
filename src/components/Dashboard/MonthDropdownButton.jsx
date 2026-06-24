@@ -1,9 +1,13 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './monthdropdownbutton.css';
+import { SelectedDateContext } from '../../SelectedDateContext';
 
-function MonthDropdownButton({ selectedDate, setSelectedDate }) {
+function MonthDropdownButton() {
 
+  // Get selectedDate and setSelectedDate
+  const { selectedDate, setSelectedDate } = useContext(SelectedDateContext);
+  
   let monthsArray = [
     {
       month: "January", 

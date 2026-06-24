@@ -7,7 +7,6 @@ export default function DayCard({ date, monthStatus, currentDateStatus }) {
       <span className={`day-card-date ${currentDateStatus}`}>
         {date.getDate()}
       </span>
-      <EventCard />
     </div>
   )
 }

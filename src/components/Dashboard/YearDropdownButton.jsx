@@ -1,8 +1,13 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./yeardropdownbutton.css";
+import { SelectedDateContext } from "../../SelectedDateContext";
 
-function YearDropdownButton({ selectedDate, setSelectedDate }) {
+function YearDropdownButton() {
+  
+  // Get selectedDate and setSelectedDate
+  const { selectedDate, setSelectedDate } = useContext(SelectedDateContext);
+  
   const startYear = 2000;
   const endYear = 2050;
   let yearsArray = [];

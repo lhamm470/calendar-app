@@ -4,31 +4,37 @@ import { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../../ThemeContext";
 import './dashboard.css';
 import DayCard from "./DayCard";
-import MonthDropdownButton from "./MonthDropdownButton";
-import YearDropdownButton from "./YearDropdownButton";
+import CalendarNavbar from "./CalendarNavbar";
+import { SelectedDateContext } from "../../SelectedDateContext";
+import AddEventForm from "./AddEventForm";
 
 export default function Dashboard() {
+  
+  // Get selectedDate and setSelectedDate
+  const { selectedDate, setSelectedDate } = useContext(SelectedDateContext);
+
+  // Manage add event modal form
+  const [showAddEventForm, setShowAddEventForm] = useState(false);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayTime = today.getTime();
+  
   const location = useLocation();
   const data = location.state;
 
   const { theme } = useContext(ThemeContext);
-
-  // Get current date and set as selected date
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const todayTime = today.getTime();
-  const [selectedDate, setSelectedDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
 
   const [dateArray, setDateArray] = useState([]);
 
 
 
   function renderMonth(newDate) {
+    // Temporary dates array
     const dates = [];
 
     const newYear = newDate.getFullYear();
     const newMonth = newDate.getMonth();
-    console.log(newMonth);
     const newDaysInMonth = new Date(newYear, newMonth + 1, 0).getDate();
     const newDay = newDate.getDay();
     const newDaysInPreviousMonth = new Date(newYear, newMonth, 0).getDate();
@@ -80,66 +86,7 @@ export default function Dashboard() {
         <h1>Dashboard</h1>
         
         {/* Calendar navbar */}
-        <div className="calendar-navbar">
-
-          {/* Change months */}
-          <button 
-            onClick={() => 
-              setSelectedDate(
-                new Date(
-                  selectedDate.getFullYear(), 
-                  selectedDate.getMonth() - 1, 
-                  1
-                )
-              )
-            }>
-            {`<-`}
-          </button>
-
-          <MonthDropdownButton selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
-
-          <button 
-            onClick={() => 
-              setSelectedDate(
-                new Date(
-                  selectedDate.getFullYear(), 
-                  selectedDate.getMonth() + 1, 
-                  1
-                )
-              )
-            }>
-            {`->`}
-          </button>
-
-          {/* Change years */}
-          <button 
-            onClick={() => 
-              setSelectedDate(
-                new Date(
-                  selectedDate.getFullYear() - 1, 
-                  selectedDate.getMonth(), 
-                  1
-                )
-              )
-            }>
-            {`<-`}
-          </button>
-
-          <YearDropdownButton selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
-
-          <button 
-            onClick={() => 
-              setSelectedDate(
-                new Date(
-                  selectedDate.getFullYear() + 1, 
-                  selectedDate.getMonth(), 
-                  1
-                )
-              )
-            }>
-            {`->`}
-          </button>
-        </div>
+        <CalendarNavbar setShowAddEventForm={setShowAddEventForm}/>
 
         {/* Days of the week */}
         <div className="calendar-days-of-week">
@@ -163,6 +110,7 @@ export default function Dashboard() {
             />
           )}
         </section>
+        <AddEventForm show={showAddEventForm} onHide={() => setShowAddEventForm(false)} />
       </main>
     </div>
   );

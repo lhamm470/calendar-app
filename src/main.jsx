@@ -12,6 +12,9 @@ import Help from "./components/Help/Help";
 // Import ThemeProvider
 import { ThemeProvider } from "./ThemeContext";
 
+// Import SelectedDateProvider
+import { SelectedDateProvider } from './SelectedDateContext';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +34,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <SelectedDateProvider>
+        <RouterProvider router={router} />
+      </SelectedDateProvider>
     </ThemeProvider>
   </StrictMode>,
 );

@@ -1,0 +1,10 @@
+.calendar-navbar {
+  background-color: var(--bg-6);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: center;
+  padding: 0 1rem;
+  width: 80%
+}
