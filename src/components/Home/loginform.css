@@ -1,0 +1,11 @@
+.login-form {
+  background-color: var(--bg-5);
+  border-radius: 10px;
+  max-height: 900px;
+  width: 350px;
+  margin-top: 80px;
+  overflow: hidden;
+  border: 1px solid rgb(98, 98, 98);
+  justify-self: center;
+  padding: 1rem;
+}

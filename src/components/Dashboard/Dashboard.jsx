@@ -80,7 +80,7 @@ export default function Dashboard() {
   }, [selectedDate])
   
   return (
-    <div className="page">
+    <div className="page dashboard">
       <NavBar />
       <main>
         <h1>Dashboard</h1>

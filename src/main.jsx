@@ -15,6 +15,9 @@ import { ThemeProvider } from "./ThemeContext";
 // Import SelectedDateProvider
 import { SelectedDateProvider } from './SelectedDateContext';
 
+// Import LoginStatusProvider
+import { LoginStatusProvider } from './LoginStatusContext';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +38,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
       <SelectedDateProvider>
-        <RouterProvider router={router} />
+        <LoginStatusProvider>
+          <RouterProvider router={router} />
+        </LoginStatusProvider>
       </SelectedDateProvider>
     </ThemeProvider>
   </StrictMode>,

@@ -5,58 +5,8 @@ import ReactDOM from "react-dom";
 import { Formik, Form, useField, useFormikContext } from "formik";
 import * as Yup from "yup";
 import InputMask from 'react-input-mask';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import './addeventform.css';
-
-const TextInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className="form-element">
-      <label className="form-label" htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const TextareaInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  return (
-    <div className="form-element">
-      <label className="form-label" htmlFor={props.id || props.name}>{label}</label>
-      <textarea className="textarea-input" {...field} {...props} />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </div>
-  );
-};
-
-const DateInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  const { setFieldValue } = useFormikContext();
-
-  return (
-    <div className="form-element">
-      <label className="form-label" htmlFor={props.id || props.name}>{label}</label>
-
-      <DatePicker 
-        selected={field.value}
-        onChange={(date) => setFieldValue(field.name, date)}
-        dateFormat="dd/MM/yyyy"
-        placeholderText="DD/MM/YYYY"
-        className="date-input"
-      />
-
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </div>
-  )
-}
+import { TextInput, TextareaInput, DateInput } from '../FormInputComponents';
 
 export default function AddEventForm({ show, onHide }) {
   
@@ -68,11 +18,14 @@ export default function AddEventForm({ show, onHide }) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
+      {/* Header */}
       <Modal.Header closeButton className="modal-header">
         <Modal.Title id="contained-modal-title-vcenter">
           Add New Event
         </Modal.Title>
       </Modal.Header>
+      
+      {/* Form body */}
       <Modal.Body className="modal-body">
         <Formik
           initialValues={{
@@ -82,6 +35,8 @@ export default function AddEventForm({ show, onHide }) {
             startTime: "",
             endTime: "",
           }}
+          
+          // Validation schema
           validationSchema={Yup.object({
             title: Yup.string()
               .max(30, "Must be 30 characters or less")
@@ -96,39 +51,43 @@ export default function AddEventForm({ show, onHide }) {
             endTime: Yup.string(),
           })}
           onSubmit={(values, { setSubmitting, setErrors }) => {
-
-            
             localStorage.setItem("currentUser", JSON.stringify(user));
             setSubmitting(false);
           }}
         >
-          <Form className="add-event-form">
+          <Form className="add-event-form input-form">
+            
+            {/* Title */}
             <TextInput
-              label={"Title"}
+              label={"Title *"}
               name="title"
               type="text"
-              placeholder="Meeting"
+              placeholder="GP Appointment"
             />
 
+            {/* Location */}
             <TextInput
               label={"Location"}
               name="location"
               type="text"
-              placeholder=""
+              placeholder="123 street"
             />
 
+            {/* Date */}
             <DateInput 
-              label={"Date"}
+              label={"Date *"}
               name="date"
             />
 
             <div className="start-and-end-times">
+              {/* Start time */}
               <TextInput 
-                label={"Start Time"}
+                label={"Start Time *"}
                 name="startTime"
                 type="time"
               />
 
+              {/* End time */}
               <TextInput 
                 label={"End Time"}
                 name="endTime"
@@ -136,13 +95,7 @@ export default function AddEventForm({ show, onHide }) {
               />
             </div>
 
-            <TextInput
-              label={"Type"}
-              name="type"
-              type="text"
-              placeholder=""
-            />
-
+            {/* Description */}
             <TextareaInput
               label={"Description"}
               name="description"

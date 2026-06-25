@@ -1,34 +1,13 @@
 .modal-header,
 .modal-body,
 .modal-footer {
-  background-color: var(--bg-7);
+  background-color: var(--bg-5);
   color: var(--text);
 }
 
-/* .form-label {
-  font-weight: bold;
+.start-and-end-times {
   display: flex;
-  margin-top: 1rem;
-  margin-left: 1.4rem;
-  justify-content: flex-start;
-  justify-self: flex-start;
-  justify-items: flex-start;
-  text-align: left;
-} */
-
-.form-element {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-label {
-  margin: 0;
-}
-
-.add-event-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 input[name="title"] {
@@ -37,17 +16,6 @@ input[name="title"] {
 
 input[name="location"] {
   width: 200px;
-}
-
-.text-input,
-.date-input,
-.time-input,
-.textarea-input {
-  border-radius: 12px;
-  border: none;
-  height: 40px;
-  padding-left: 10px;
-  box-shadow: var(--input-shadow);
 }
 
 .date-input {
@@ -60,9 +28,5 @@ input[name="location"] {
 
 textarea[name="description"] {
   height: 80px;
-}
-
-.start-and-end-times {
-  display: flex;
-  gap: 10px;
+  width: 100%;
 }
