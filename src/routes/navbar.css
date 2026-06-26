@@ -76,6 +76,13 @@ nav {
   border: none;
   box-shadow: var(--button-shadow);
   background-color: var(--bg-6);
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 4rem;
 }
 
 .navbar-authentication-button:hover {

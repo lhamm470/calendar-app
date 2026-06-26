@@ -6,6 +6,8 @@ import './loggedincard.css'
 export default function LoggedInCard() {
   // Get loginstatus
   const { loginStatus, setLoginStatus } = useContext(LoginStatusContext);
+
+  localStorage.clear();
   
   return (
     <section className="logged-in-card">
@@ -15,7 +17,7 @@ export default function LoggedInCard() {
         className="authentication-button logout-button"
         onClick={() => {
           setLoginStatus("login");
-          localStorage.setItem("currentUser", "");
+          localStorage.setItem("currentUser", "null");
         }}
       >
         Logout
@@ -25,7 +27,7 @@ export default function LoggedInCard() {
         className="register-instead" 
         onClick={() => {
           setLoginStatus("register");
-          localStorage.setItem("currentUser", "");
+          localStorage.setItem("currentUser", "null");
         }}
       >
         Register New User

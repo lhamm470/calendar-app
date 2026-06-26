@@ -106,7 +106,7 @@ const RegisterForm = ({ registeredUsers }) => {
             className="login-instead" 
             onClick={() => {
               setLoginStatus("login");
-              localStorage.setItem("currentUser", "");
+              localStorage.setItem("currentUser", "null");
             }}
           >
             Login instead

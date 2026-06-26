@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { LoginStatusContext } from "../LoginStatusContext";
 import './navbar.css';
 
 export default function NavBar() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+
+  // Get loginstatus from LoginStatusContext
+  const { loginStatus, setLoginStatus } = useContext(LoginStatusContext);
 
   return (
     <div className="main-navbar">
@@ -30,13 +34,48 @@ export default function NavBar() {
         {currentUser ? 
           <div className="navbar-login-status">
             <span className="login-status-text">{currentUser.firstName} {currentUser.lastName}</span>
-            <button className="navbar-authentication-button">Logout</button>
-            <button className="navbar-authentication-button">Sign up</button>
+            <Link 
+              to="/" 
+              className="navbar-authentication-button" 
+              onClick={() => {
+                setLoginStatus("login");
+                localStorage.setItem("currentUser", "null");
+              }}
+            >
+              Logout
+            </Link>
+            <Link 
+              to="/" 
+              className="navbar-authentication-button" 
+              onClick={() => {
+                setLoginStatus("register");
+                localStorage.setItem("currentUser", "null");
+              }}
+            >
+              Sign up
+            </Link>
           </div> :
           <div className="navbar-login-status">
-            <span className="login-status-text">Currently logged out.</span>
-            <button className="navbar-authentication-button">Login</button>
-            <button className="navbar-authentication-button">Sign up</button>
+            <Link 
+              to="/" 
+              className="navbar-authentication-button" 
+              onClick={() => {
+                setLoginStatus("login");
+                localStorage.setItem("currentUser", "null");
+              }}
+            >
+              Login
+            </Link>
+            <Link 
+              to="/" 
+              className="navbar-authentication-button" 
+              onClick={() => {
+                setLoginStatus("register");
+                localStorage.setItem("currentUser", "null");
+              }}
+            >
+              Sign up
+            </Link>
           </div>
         }
       </section>
