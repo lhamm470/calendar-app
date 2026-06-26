@@ -29,3 +29,9 @@
 .register-link {
   background-color: var(--)
 }
+
+.login-prompt {
+  margin: 0;
+  margin-top: 0.4rem;
+  padding: 0;
+}

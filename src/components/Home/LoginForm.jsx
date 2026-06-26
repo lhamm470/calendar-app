@@ -15,6 +15,7 @@ const LoginForm = ({ registeredUsers }) => {
   return (
     <div className="login-form">
       <h2>Login</h2>
+      <hr></hr>
       <Formik
         initialValues={{
           email: "",
@@ -31,13 +32,15 @@ const LoginForm = ({ registeredUsers }) => {
         onSubmit={(values, { setSubmitting, setErrors }) => {
 
           // Check if email and password are valid
-          const user = Object.values(registeredUsers).find((user) => user.email === values.email)
+          const entry = Object.entries(registeredUsers).find(([userId, userInformation]) => userInformation.email === values.email)
 
-          if (!user) {
+          if (!entry) {
             setErrors({ email: "Email does not exist"});
             setSubmitting(false);
             return;
           } 
+
+          const [userId, user] = entry;
           
           if (user.password !== values.password) {
             setErrors({ password: "Incorrect password"});
@@ -46,7 +49,8 @@ const LoginForm = ({ registeredUsers }) => {
           }
           
           setLoginStatus("loggedIn");
-          localStorage.setItem("currentUser", JSON.stringify(user));
+          localStorage.setItem("currentUser", JSON.stringify({ userId, ...user }));
+          console.log(localStorage);
           setSubmitting(false);
         }}
       >

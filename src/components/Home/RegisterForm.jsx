@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 
 console.log(localStorage);
 
-const RegisterForm = ({ registeredUsers }) => {
+const RegisterForm = ({ registeredUsers, setRegisteredUsers }) => {
 
   // Get loginstatus
   const { loginStatus, setLoginStatus } = useContext(LoginStatusContext);
@@ -17,6 +17,7 @@ const RegisterForm = ({ registeredUsers }) => {
   return (
     <div className="register-form">
       <h2>Register New User</h2>
+      <hr></hr>
       <Formik
         initialValues={{
           firstName: "",
@@ -51,14 +52,23 @@ const RegisterForm = ({ registeredUsers }) => {
           // Destructure values to remove confirmPassword field
           const { confirmPassword, ...userData } = values;
 
+          // Set nextUserId to 1 for first registered user
+          if (!localStorage.getItem("nextUserId")) {
+            localStorage.setItem("nextUserId", 1)
+          }
+
+          // Get nextUserId from localStorage
           let nextUserId = Number(localStorage.getItem("nextUserId"));
-          registeredUsers[`user${nextUserId}`] = userData;
 
-          localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+          // Make updated user data object, including empty events array
+          const updatedUsers = {
+            ...registeredUsers,
+            [`user${nextUserId}`]: {...userData, events: []}
+          };
+          setRegisteredUsers(updatedUsers);
+
+          localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
           localStorage.setItem("nextUserId", String(nextUserId + 1));
-
-          console.log(registeredUsers);
-          console.log(localStorage);
 
           setLoginStatus("login");
           setSubmitting(false);

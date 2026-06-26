@@ -7,11 +7,11 @@ export default function LoggedInCard() {
   // Get loginstatus
   const { loginStatus, setLoginStatus } = useContext(LoginStatusContext);
 
-  localStorage.clear();
   
   return (
     <section className="logged-in-card">
       <h3 className="login-prompt">Welcome, {JSON.parse(localStorage.getItem("currentUser"))?.firstName}!</h3>
+      <hr></hr>
       <p>Navigate to your dashboard to view and manage upcoming events.</p>
       <button 
         className="authentication-button logout-button"

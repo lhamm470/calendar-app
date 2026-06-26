@@ -51,7 +51,22 @@ export default function AddEventForm({ show, onHide }) {
             endTime: Yup.string(),
           })}
           onSubmit={(values, { setSubmitting, setErrors }) => {
-            localStorage.setItem("currentUser", JSON.stringify(user));
+            // Get current user id
+            const currentUserId = JSON.parse(localStorage.getItem("currentUser")).userId;
+
+            // Destructure values to reformat the date
+            const { date, ...otherValues } = values;
+            const formattedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            const formattedValues = { ...otherValues, date: formattedDate };
+
+            // Get a copy of registeredUsers from localStorage and update the current user's events array with the newly added event
+            const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || {};
+            registeredUsers[currentUserId].events.push(formattedValues);
+
+            // Update localStorage with the added event
+            localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+            console.log(localStorage.getItem("registeredUsers"));
+
             setSubmitting(false);
           }}
         >
