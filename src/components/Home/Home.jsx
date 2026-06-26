@@ -30,10 +30,10 @@ export default function Home() {
     <div className="page">
       <NavBar />
       <main>
-        <h1>Welcome to the homepage!</h1>
+        <h1>Home</h1>
         
         {loginStatus == "loggedIn" ? <LoggedInCard /> : ""}
-        {loginStatus == "login" ? <LoginForm /> : ""}
+        {loginStatus == "login" ? <LoginForm registeredUsers={registeredUsers}/> : ""}
         {loginStatus == "register" ? <RegisterForm registeredUsers={registeredUsers}/> : ""}
         
         

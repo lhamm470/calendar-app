@@ -7,9 +7,7 @@ import { TextInput } from '../FormInputComponents';
 import { LoginStatusContext } from "../../LoginStatusContext";
 import { useContext, useState } from "react";
 
-let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-
-const LoginForm = () => {
+const LoginForm = ({ registeredUsers }) => {
   
   // Get loginstatus
   const { loginStatus, setLoginStatus } = useContext(LoginStatusContext);
@@ -33,7 +31,7 @@ const LoginForm = () => {
         onSubmit={(values, { setSubmitting, setErrors }) => {
 
           // Check if email and password are valid
-          const user = registeredUsers.find((user) => user.email === values.email)
+          const user = Object.values(registeredUsers).find((user) => user.email === values.email)
 
           if (!user) {
             setErrors({ email: "Email does not exist"});
@@ -67,7 +65,17 @@ const LoginForm = () => {
             placeholder=""
           />
 
-          <button type="submit">Login</button>
+          <button type="submit" className="authentication-button">Login</button>
+
+          <button 
+            className="register-instead" 
+            onClick={() => {
+              setLoginStatus("register");
+              localStorage.setItem("currentUser", "");
+            }}
+          >
+            Register New User
+          </button>
         </Form>
       </Formik>
     </div>

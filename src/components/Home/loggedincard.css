@@ -1,0 +1,31 @@
+.logged-in-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--bg-5);
+  border-radius: 10px;
+  max-height: 900px;
+  width: 350px;
+  margin-top: 80px;
+  overflow: hidden;
+  border: 1px solid rgb(98, 98, 98);
+  justify-self: center;
+  padding: 1rem;
+}
+
+.logout-button {
+  background-color: var(--logout-button);
+  width: 10rem;
+}
+
+.logout-button:hover {
+  background-color: var(--logout-button-hover);
+}
+
+.logout-button:active {
+  background-color: var(--logout-button-active);
+}
+
+.register-link {
+  background-color: var(--)
+}

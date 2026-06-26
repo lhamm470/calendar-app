@@ -7,7 +7,6 @@ import { TextInput } from '../FormInputComponents';
 import { LoginStatusContext } from "../../LoginStatusContext";
 import { useContext, useState } from "react";
 
-localStorage.clear();
 console.log(localStorage);
 
 const RegisterForm = ({ registeredUsers }) => {
@@ -101,7 +100,17 @@ const RegisterForm = ({ registeredUsers }) => {
             placeholder=""
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" className="authentication-button">Submit</button>
+
+          <button 
+            className="login-instead" 
+            onClick={() => {
+              setLoginStatus("login");
+              localStorage.setItem("currentUser", "");
+            }}
+          >
+            Login instead
+          </button>
         </Form>
       </Formik>
     </div>

@@ -49,7 +49,7 @@
 
   --button-shadow:
     0 2px 4px rgba(0, 0, 0, 0.4),
-    0 8px 16px rgba(0, 0, 0, 0.25);
+    0 4px 8px rgba(0, 0, 0, 0.25);
 
   /* Authentication button colours */
   --login-button: hsl(145, 65%, 45%);
@@ -176,7 +176,7 @@ p {
   overflow-x: hidden;
   background-color: var(--bg-1);
   color: var(--text);
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 .input-form {
@@ -201,24 +201,41 @@ textarea:focus {
   background-color: var(--bg-6);
 }
 
-button[type="submit"] {
+.authentication-button {
   border-radius: 9999px;
+  margin: 10px auto 3px;
   width: auto;
   border: none;
   box-shadow: var(--button-shadow);
   background-color: var(--bg-9);
   color: var(--text);
+  font-size: 1.2rem;
+  height: 2rem;
+  width: 6rem;
   transition: 0.1s;
 }
 
-button[type="submit"]:hover {
+.authentication-button:hover {
   background-color: var(--bg-10);
 }
 
-button[type="submit"]:active {
+.authentication-button:active {
   background-color: var(--bg-8);
 }
 
+.register-instead {
+  background-color: var(--bg-5);
+  outline: none;
+  border: none;
+  color: var(--text-muted-1);
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.register-instead:hover {
+  text-decoration: underline;
+  color: var(--text);
+}
 
 
 @media (max-width: 1024px) {

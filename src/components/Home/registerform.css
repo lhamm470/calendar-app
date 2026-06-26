@@ -9,3 +9,22 @@
   justify-self: center;
   padding: 1rem;
 }
+
+.login-instead {
+  background-color: var(--bg-5);
+  outline: none;
+  border: none;
+  color: var(--text-muted-1);
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.login-instead:hover {
+  text-decoration: underline;
+  color: var(--text);
+}
+
+input[name="firstName"],
+input[name="lastName"] {
+  width: 8rem;
+}

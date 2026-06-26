@@ -1,9 +1,9 @@
 import { createContext, useState } from 'react';
 
-export const LoginStatusContext = createContext("register");
+export const LoginStatusContext = createContext("loggedIn");
 
 export const LoginStatusProvider = ({ children }) => {
-  const [loginStatus, setLoginStatus] = useState("register");
+  const [loginStatus, setLoginStatus] = useState("loggedIn");
 
   return (
     <LoginStatusContext.Provider value={{ loginStatus, setLoginStatus }}>

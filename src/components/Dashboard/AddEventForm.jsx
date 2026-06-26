@@ -103,7 +103,7 @@ export default function AddEventForm({ show, onHide }) {
               placeholder=""
             />
 
-            <button type="submit">Add Event</button>
+            <button type="submit" className="authentication-button">Add Event</button>
           </Form>
         </Formik>
       </Modal.Body>
