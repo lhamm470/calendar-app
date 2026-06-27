@@ -54,4 +54,25 @@ const DateInput = ({ label, ...props }) => {
   )
 }
 
-export { TextInput, TextareaInput, DateInput };
+const ColourInput = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  const { setFieldValue } = useFormikContext();
+
+  return (
+    <div className="form-element">
+      <label className="form-label form-label-blank" htmlFor={props.id || props.name}>{label}</label>
+      <input 
+        {...field}
+        {...props}
+        type="color" 
+        className="colour-input"
+      />
+
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
+    </div>
+  )
+}
+
+export { TextInput, TextareaInput, DateInput, ColourInput };

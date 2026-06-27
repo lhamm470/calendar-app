@@ -6,7 +6,7 @@ import { Formik, Form, useField, useFormikContext } from "formik";
 import * as Yup from "yup";
 import InputMask from 'react-input-mask';
 import './addeventform.css';
-import { TextInput, TextareaInput, DateInput } from '../FormInputComponents';
+import { TextInput, TextareaInput, DateInput, ColourInput } from '../FormInputComponents';
 
 export default function AddEventForm({ show, onHide }) {
   
@@ -30,6 +30,7 @@ export default function AddEventForm({ show, onHide }) {
         <Formik
           initialValues={{
             title: "",
+            colour: "#008000",
             location: "",
             date: null,
             startTime: "",
@@ -68,17 +69,26 @@ export default function AddEventForm({ show, onHide }) {
             console.log(localStorage.getItem("registeredUsers"));
 
             setSubmitting(false);
+            onHide();
           }}
         >
           <Form className="add-event-form input-form">
             
             {/* Title */}
-            <TextInput
-              label={"Title *"}
-              name="title"
-              type="text"
-              placeholder="GP Appointment"
-            />
+            <div className="title-and-colour">
+              <TextInput
+                label={"Title *"}
+                name="title"
+                type="text"
+                placeholder="GP Appointment"
+              />
+
+              <ColourInput
+                label="."
+                name="colour"
+                type="colour" 
+              />
+            </div>
 
             {/* Location */}
             <TextInput
@@ -118,7 +128,7 @@ export default function AddEventForm({ show, onHide }) {
               placeholder=""
             />
 
-            <button type="submit" className="authentication-button">Add Event</button>
+            <button type="submit" className="authentication-button add-event-submission">Add Event</button>
           </Form>
         </Formik>
       </Modal.Body>

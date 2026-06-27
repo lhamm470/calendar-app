@@ -9,3 +9,7 @@
   margin: 0;
   text-align: left;
 }
+
+.form-label-blank {
+  visibility: hidden;
+}

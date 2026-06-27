@@ -11,11 +11,11 @@
 }
 
 input[name="title"] {
-  width: 200px;
+  width: 180px;
 }
 
 input[name="location"] {
-  width: 200px;
+  width: 180px;
 }
 
 .date-input {
@@ -26,7 +26,26 @@ input[name="location"] {
   width: 1000px;
 }
 
+.colour-input {
+  background: var(--bg-6);
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0.15rem;
+  width: auto;
+  aspect-ratio: 1 / 1;
+}
+
 textarea[name="description"] {
   height: 80px;
   width: 100%;
+}
+
+.title-and-colour {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-event-submission {
+  width: 8rem;
 }
