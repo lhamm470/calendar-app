@@ -63,7 +63,7 @@ const RegisterForm = ({ registeredUsers, setRegisteredUsers }) => {
           // Make updated user data object, including empty events array
           const updatedUsers = {
             ...registeredUsers,
-            [`user${nextUserId}`]: {...userData, events: []}
+            [`user${nextUserId}`]: {...userData, events: [], nextEventId: 1}
           };
           setRegisteredUsers(updatedUsers);
 

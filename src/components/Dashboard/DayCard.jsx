@@ -20,7 +20,7 @@ export default function DayCard({ date, monthStatus, currentDateStatus }) {
         {date.getDate()}
       </span>
       {todaysEvents.map((event, index) => (
-        <EventCard key={index} title={event.title} startTime={event.startTime} endTime={event.endTime} colour={event.colour} />
+        <EventCard key={index} event={event} />
       ))}
     </div>
   )

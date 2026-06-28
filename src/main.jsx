@@ -18,6 +18,9 @@ import { SelectedDateProvider } from './SelectedDateContext';
 // Import LoginStatusProvider
 import { LoginStatusProvider } from './LoginStatusContext';
 
+// Import RefreshKeyProvider
+import { RefreshKeyProvider } from './RefreshKeyContext';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,7 +42,9 @@ createRoot(document.getElementById('root')).render(
     <ThemeProvider>
       <SelectedDateProvider>
         <LoginStatusProvider>
-          <RouterProvider router={router} />
+          <RefreshKeyProvider>
+            <RouterProvider router={router} />
+          </RefreshKeyProvider>
         </LoginStatusProvider>
       </SelectedDateProvider>
     </ThemeProvider>

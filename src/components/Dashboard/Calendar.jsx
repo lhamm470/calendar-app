@@ -5,7 +5,11 @@ import AddEventForm from "./AddEventForm";
 import { useState, useEffect, useContext } from 'react';
 import { SelectedDateContext } from "../../SelectedDateContext";
 
+import { RefreshKeyContext } from "../../RefreshKeyContext";
+
 export default function Calendar() {
+  const { refreshKey } = useContext(RefreshKeyContext);
+  
   // Manage add event modal form
   const [showAddEventForm, setShowAddEventForm] = useState(false);
 
@@ -68,7 +72,8 @@ export default function Calendar() {
 
   useEffect(() => {
     renderMonth(selectedDate);
-  }, [selectedDate])
+    console.log("rerendered");
+  }, [selectedDate, refreshKey])
   
   return (
     <>

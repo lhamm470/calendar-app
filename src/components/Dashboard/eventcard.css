@@ -5,6 +5,16 @@
   width: 90%;
   padding: 0.1rem 0;
   margin: 0.2rem auto;
+  border: none;
+  border: 2px solid var(--bg-7);
+}
+
+.event-card:hover {
+  border: 2px solid var(--event-card-border-hover);
+}
+
+.event-card:active {
+  border: 2px solid var(--event-card-border-active);
 }
 
 .event-card-time,

@@ -49,24 +49,43 @@ export default function AddEventForm({ show, onHide }) {
               .required("Required"),
             startTime: Yup.string()
               .required("Required"),
-            endTime: Yup.string(),
+            endTime: Yup.string()
+              .test(
+                "after-start",
+                "End time must be after start time",
+                function (endTime) {
+                  const { startTime } = this.parent;
+
+                  if (!startTime || !endTime) return true;
+
+                  return endTime > startTime;
+                }
+              ),
           })}
           onSubmit={(values, { setSubmitting, setErrors }) => {
-            // Get current user id
-            const currentUserId = JSON.parse(localStorage.getItem("currentUser")).userId;
+            // Get current user id and eventId
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const currentUserId = currentUser.userId;
+            const currentEventId = currentUser.nextEventId;
 
             // Destructure values to reformat the date
             const { date, ...otherValues } = values;
             const formattedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-            const formattedValues = { ...otherValues, date: formattedDate };
+            const formattedValues = { ...otherValues, date: formattedDate, eventId: currentEventId };
 
             // Get a copy of registeredUsers from localStorage and update the current user's events array with the newly added event
             const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || {};
+            registeredUsers[currentUserId].nextEventId += 1;
             registeredUsers[currentUserId].events.push(formattedValues);
 
-            // Update localStorage with the added event
+            // Update currentUser details
+            const { ...userInformation } = registeredUsers[currentUserId];
+            const updatedCurrentUserInformation = { userId: currentUserId, ...userInformation }
+            localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUserInformation));
+
+            // Update localStorage with the added event and update currentUser details
             localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
-            console.log(localStorage.getItem("registeredUsers"));
+            console.log(localStorage);
 
             setSubmitting(false);
             onHide();
@@ -132,7 +151,7 @@ export default function AddEventForm({ show, onHide }) {
           </Form>
         </Formik>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className="modal-footer">
 
       </Modal.Footer>
     </Modal>
