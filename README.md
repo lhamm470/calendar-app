@@ -13,7 +13,7 @@ Install the following before running the project:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/calendar-app.git
+git clone https://github.com/lhamm470/calendar-app.git
 ```
 
 2. Navigate to the project folder:
