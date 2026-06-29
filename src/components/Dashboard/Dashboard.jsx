@@ -18,8 +18,6 @@ export default function Dashboard() {
     <div className="page dashboard">
       <NavBar />
       <main>
-        <h1>Dashboard</h1>
-        
         {localStorage.getItem("currentUser") != "null" ? 
           <Calendar /> :
           <span>Log in to view your dashboard content</span>

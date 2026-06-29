@@ -1,7 +1,7 @@
 .day-card {
   display: flex;
   flex-direction: column;
-  min-height: 80px;
+  min-height: 5rem;
   border-radius: 0.6rem;
   min-width: 0;
   padding-bottom: 0.2rem;
@@ -13,12 +13,12 @@
 }
 
 .adjacent-month {
-  background-color: var(--bg-6);
+  background-color: var(--bg-5);
   color: var(--text-muted-3);
 }
 
 .current-date {
-  background-color: blue;
+  background-color: #3B82F6;
   color: var(--text);
   border-radius: 9999px;
 }

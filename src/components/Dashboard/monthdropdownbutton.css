@@ -1,3 +1,5 @@
 .month-dropdown-button {
   width: 80px;
+  font-size: 16px;
+  box-shadow: var(--button-shadow);
 }

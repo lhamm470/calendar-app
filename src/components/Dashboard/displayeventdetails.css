@@ -70,3 +70,8 @@
 .popover .popover-arrow::before, .popover .popover-arrow::after {
     border-bottom-color: var(--bg-10);
 }
+
+.details-text {
+  text-wrap: wrap;
+  overflow: hidden;
+}

@@ -18,11 +18,11 @@ function YearDropdownButton() {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle id="dropdown-basic" className="year-dropdown-button">
+      <Dropdown.Toggle id="dropdown-basic" className="year-dropdown-button" style={{ color: "var(--text)" }}>
         {selectedDate.getFullYear()}
       </Dropdown.Toggle>
 
-      <Dropdown.Menu>
+      <Dropdown.Menu className="year-dropdown-menu">
         {yearsArray.map((year, index) => (
           <Dropdown.Item
             key={year}

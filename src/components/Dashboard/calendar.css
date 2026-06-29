@@ -3,9 +3,16 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.3rem;
-  width: 80%;
+  width: 90%;
   padding: 1%;
   justify-self: center;
+}
+
+@media (max-width: 640px) {
+  .calendar-days-of-week,
+  .calendar {
+    width: 100%;
+  }
 }
 
 .calendar-days-of-week {

@@ -85,7 +85,6 @@ export default function DisplayEventDetails({ show, onHide, event }) {
         {/* Header */}
         <Modal.Header closeButton className="modal-header">
           <div className="event-details-header">
-            <h3 style={{ margin: "0", padding: "0" }}>{event.title}</h3>
 
             <div className="edit-and-remove-event-buttons">
               <button 
@@ -96,7 +95,7 @@ export default function DisplayEventDetails({ show, onHide, event }) {
                   onHide();
                 }}
               >
-                <MdEdit />
+                <MdEdit style={{ color: "var(--opposite-theme)" }}/>
               </button>
 
               {/* Delete button confirmation popover */}
@@ -116,7 +115,7 @@ export default function DisplayEventDetails({ show, onHide, event }) {
                     console.log(showDeleteEvent);
                   }}
                 >
-                  <MdDelete />
+                  <MdDelete style={{ color: "var(--opposite-theme)" }}/>
                 </button>
               </OverlayTrigger>
 
@@ -127,12 +126,13 @@ export default function DisplayEventDetails({ show, onHide, event }) {
         
         {/* Form body */}
         <Modal.Body className="modal-body event-details">
+          <h3 className="details-text">{event.title}</h3>
           <span>{dayName} {date} {monthName} {year}</span>
           <span style={{ fontWeight: "bold" }}>{event.startTime}{event.endTime ? ` - ${event.endTime}` : null}</span>
           <br />
-          <span>Location: {event.location || "-"}</span>
+          <span className="details-text">Location: {event.location || "-"}</span>
           <br />
-          <span>Description: {event.description || "-"}</span>
+          <span className="details-text">Description: {event.description || "-"}</span>
         </Modal.Body>
         <Modal.Footer className="modal-footer">
 

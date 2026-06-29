@@ -17,7 +17,9 @@ export default function IncrementDateButton({ incrementYear=0, incrementMonth=0 
             1
           )
         )
-      }>
+      }
+      className="increment-date-button"
+    >
       {incrementYear < 0 || incrementMonth < 0 ? `<` : `>`}
     </button>
   )

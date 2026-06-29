@@ -16,6 +16,11 @@ input[name="location"] {
   width: 180px;
 }
 
+input,
+textarea {
+  color: var(--text);
+}
+
 .date-input {
   width: 132px;
 }
@@ -25,7 +30,7 @@ input[name="location"] {
 }
 
 .colour-input {
-  background: var(--bg-6);
+  background: var(--bg-2);
   box-shadow: none;
   border-radius: 0;
   margin: 0;

@@ -64,6 +64,7 @@ function MonthDropdownButton() {
       <Dropdown.Toggle 
         id="dropdown-basic"
         className="month-dropdown-button"
+        style={{ color: "var(--text)" }}
       >
         {selectedDate.toLocaleString("default", { month: "short" })}
       </Dropdown.Toggle>

@@ -1,0 +1,25 @@
+.increment-date-button {
+  color: var(--text); 
+  border-radius: 9999px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #0d6efd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  font-size: 16px;
+  box-shadow: var(--button-shadow);
+}
+
+.increment-date-button:hover {
+  background-color: #0b5ed7;
+}
+
+.increment-date-button:active {
+  background-color: #0a58ca;
+  transform: scale(0.98);
+  box-shadow: var(--button-shadow-active);
+  transform: translateY(1px);
+}

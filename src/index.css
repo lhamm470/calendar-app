@@ -41,6 +41,8 @@
   --text-muted-7: hsl(0, 0%, 60%);
   --text-muted-8: hsl(0, 0%, 55%);
 
+  --opposite-theme: white;
+
   --slider-circle: white;
 
   --input-shadow: 
@@ -50,6 +52,11 @@
   --button-shadow:
     0 2px 4px rgba(0, 0, 0, 0.4),
     0 4px 8px rgba(0, 0, 0, 0.25);
+
+  --button-shadow-active:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0 3px 5px rgba(0, 0, 0, 0.2);
 
   --event-card-border-hover: white;
   --event-card-border-active: rgb(186, 186, 186);
@@ -108,6 +115,8 @@
   --text-muted-7: hsl(0, 0%, 45%);
   --text-muted-8: hsl(0, 0%, 50%);
 
+  --opposite-theme: black;
+
   --slider-circle: hsl(0, 0%, 30%);
 
   --input-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
@@ -118,10 +127,19 @@
   --button-shadow:
     0 1px 3px rgba(0, 0, 0, 0.12),
     0 4px 12px rgba(0, 0, 0, 0.08);
+
+  --button-shadow-active:
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    inset 0 3px 6px rgba(0, 0, 0, 0.18);
 }
 
 body.modal-open {
   padding-right: 0 !important;
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 .modal-header,
@@ -190,7 +208,7 @@ p {
   overflow-x: hidden;
   background-color: var(--bg-1);
   color: var(--text);
-  padding-top: 100px;
+  padding-top: 6rem;
 }
 
 .input-form {

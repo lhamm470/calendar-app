@@ -14,9 +14,6 @@ export default function Home() {
 
   // Get theme and setTheme from ThemeContext
   const { theme, setTheme } = useContext(ThemeContext);
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme)
-  }, [theme])
 
   // Get loginstatus from LoginStatusContext
   const { loginStatus, setLoginStatus } = useContext(LoginStatusContext);
@@ -42,7 +39,9 @@ export default function Home() {
             <input
               type="checkbox"
               checked={theme === "dark"}
-              onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onChange={() => {
+                setTheme(theme === "dark" ? "light" : "dark");
+              }}
             />
             <span className="slider"></span>
           </label>
