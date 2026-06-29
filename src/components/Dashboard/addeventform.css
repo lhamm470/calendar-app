@@ -47,3 +47,7 @@ textarea[name="description"] {
 .add-event-submission {
   width: 8rem;
 }
+
+.edit-event-submission {
+  width: 11rem;
+}

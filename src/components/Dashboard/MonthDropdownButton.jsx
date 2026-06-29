@@ -65,7 +65,7 @@ function MonthDropdownButton() {
         id="dropdown-basic"
         className="month-dropdown-button"
       >
-        {selectedDate.toLocaleString("default", { month: "long" })}
+        {selectedDate.toLocaleString("default", { month: "short" })}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

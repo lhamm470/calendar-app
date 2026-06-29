@@ -82,13 +82,34 @@ export default function Calendar() {
 
       {/* Days of the week */}
       <div className="calendar-days-of-week">
-        <span className="day-of-week">Monday</span>
-        <span className="day-of-week">Tuesday</span>
-        <span className="day-of-week">Wednesday</span>
-        <span className="day-of-week">Thursday</span>
-        <span className="day-of-week">Friday</span>
-        <span className="day-of-week">Saturday</span>
-        <span className="day-of-week">Sunday</span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Monday</span>
+          <span className="short-day-of-week">Mon</span>
+        </span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Tuesday</span>
+          <span className="short-day-of-week">Tue</span>
+        </span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Wednesday</span>
+          <span className="short-day-of-week">Wed</span>
+        </span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Thursday</span>
+          <span className="short-day-of-week">Thu</span>
+        </span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Friday</span>
+          <span className="short-day-of-week">Fri</span>
+        </span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Saturday</span>
+          <span className="short-day-of-week">Sat</span>
+        </span>
+        <span className="day-of-week">
+          <span className="full-day-of-week">Sunday</span>
+          <span className="short-day-of-week">Sun</span>
+        </span>
       </div>
 
       {/* Calendar */}

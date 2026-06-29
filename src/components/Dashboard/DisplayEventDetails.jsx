@@ -11,6 +11,7 @@ import { useState, useRef, useContext } from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { RefreshKeyContext } from '../../RefreshKeyContext';
+import EditEventForm from './EditEventForm';
 
 export default function DisplayEventDetails({ show, onHide, event }) {
   const { refreshKey, setRefreshKey } = useContext(RefreshKeyContext);
@@ -23,6 +24,9 @@ export default function DisplayEventDetails({ show, onHide, event }) {
 
   // Delete event popup
   const[showDeleteEvent, setShowDeleteEvent] = useState(false);
+
+  // Edit event modal
+  const [showEditEventForm, setShowEditEventForm] = useState(false);
 
   const deletePopover = (
     <Popover id="delete-popover">
@@ -84,7 +88,14 @@ export default function DisplayEventDetails({ show, onHide, event }) {
             <h3 style={{ margin: "0", padding: "0" }}>{event.title}</h3>
 
             <div className="edit-and-remove-event-buttons">
-              <button className="icon-button" title="Edit Event">
+              <button 
+                className="icon-button" 
+                title="Edit Event"
+                onClick={() => {
+                  setShowEditEventForm(true);
+                  onHide();
+                }}
+              >
                 <MdEdit />
               </button>
 
@@ -97,10 +108,13 @@ export default function DisplayEventDetails({ show, onHide, event }) {
                 overlay={deletePopover}
                 onToggle={(nextShow) => setShowDeleteEvent(nextShow)}
               >
-                <button className="icon-button" title="Remove Event" onClick={() => {
-                  setShowDeleteEvent(true);
-                  console.log(showDeleteEvent);
-                }}
+                <button 
+                  className="icon-button" 
+                  title="Remove Event" 
+                  onClick={() => {
+                    setShowDeleteEvent(true);
+                    console.log(showDeleteEvent);
+                  }}
                 >
                   <MdDelete />
                 </button>
@@ -124,6 +138,7 @@ export default function DisplayEventDetails({ show, onHide, event }) {
 
         </Modal.Footer>
       </Modal>
+      <EditEventForm show={showEditEventForm} onHide={() => setShowEditEventForm(false)} event={event} />
     </>
   )
 }

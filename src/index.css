@@ -251,6 +251,19 @@ textarea:focus {
   color: var(--text);
 }
 
+.error {
+  font-size: 12px;
+  color: red;
+}
+
+.full-day-of-week {
+  display: inline
+}
+
+.short-day-of-week {
+  display: none
+}
+
 
 @media (max-width: 1024px) {
   .main-navbar {
@@ -262,7 +275,7 @@ textarea:focus {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .main-navbar {
     padding: 0 0.8rem;
   }
@@ -270,9 +283,26 @@ textarea:focus {
   .nav-links {
     gap: 1.6rem;
   }
+
+  .full-day-of-week {
+    display: none
+  }
+
+  .short-day-of-week {
+    display: inline
+  }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 640px) {
+  .main-navbar {
+    padding: 0 0.5rem;
+  }
+  
+  .nav-links {
+    gap: 1.2rem;
+  }
+}
+@media (max-width: 480px) {
   .main-navbar {
     padding: 0 0.3rem;
   }
@@ -280,9 +310,4 @@ textarea:focus {
   .nav-links {
     gap: 0.8rem;
   }
-}
-
-.error {
-  font-size: 12px;
-  color: red;
 }

@@ -7,9 +7,12 @@ import * as Yup from "yup";
 import InputMask from 'react-input-mask';
 import './addeventform.css';
 import { TextInput, TextareaInput, DateInput, ColourInput } from '../FormInputComponents';
+import { RefreshKeyContext } from '../../RefreshKeyContext';
+import { useContext } from 'react';
 
-export default function AddEventForm({ show, onHide }) {
-  
+export default function EditEventForm({ show, onHide, event }) {
+  const { refreshKey, setRefreshKey } = useContext(RefreshKeyContext);
+
   return (
     <Modal
       show={show}
@@ -21,7 +24,7 @@ export default function AddEventForm({ show, onHide }) {
       {/* Header */}
       <Modal.Header closeButton className="modal-header">
         <Modal.Title id="contained-modal-title-vcenter">
-          Add New Event
+          Edit Event
         </Modal.Title>
       </Modal.Header>
       
@@ -29,13 +32,13 @@ export default function AddEventForm({ show, onHide }) {
       <Modal.Body className="modal-body">
         <Formik
           initialValues={{
-            title: "",
-            colour: "#008000",
-            location: "",
-            date: null,
-            startTime: "",
-            endTime: "",
-            description: "",
+            title: event.title,
+            colour: event.colour,
+            location: event.location,
+            date: new Date(event.date),
+            startTime: event.startTime,
+            endTime: event.endTime,
+            description: event.description,
           }}
           
           // Validation schema
@@ -67,27 +70,33 @@ export default function AddEventForm({ show, onHide }) {
             // Get current user id and eventId
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const currentUserId = currentUser.userId;
-            const currentEventId = currentUser.nextEventId;
+
+            console.log(values.date);
+            console.log(typeof values.date);
+            console.log(values.date instanceof Date);
 
             // Destructure values to reformat the date
             const { date, ...otherValues } = values;
             const formattedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-            const formattedValues = { ...otherValues, date: formattedDate, eventId: currentEventId };
+            const formattedValues = { ...otherValues, date: formattedDate, eventId: event.eventId };
 
-            // Get a copy of registeredUsers from localStorage and update the current user's events array with the newly added event
+            // Get a copy of registeredUsers from localStorage and replace the old event details with the updated details
             const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || {};
-            registeredUsers[currentUserId].nextEventId += 1;
-            registeredUsers[currentUserId].events.push(formattedValues);
+            let currentEvent = registeredUsers[currentUserId].events.find(
+              (e) => e.eventId == event.eventId
+            );
+            Object.assign(currentEvent, formattedValues);
 
             // Update currentUser details
             const { ...userInformation } = registeredUsers[currentUserId];
             const updatedCurrentUserInformation = { userId: currentUserId, ...userInformation }
             localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUserInformation));
 
-            // Update localStorage with the added event and update currentUser details
+            // Update localStorage with the updated event and update currentUser details
             localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
             console.log(localStorage);
 
+            setRefreshKey((prev) => prev + 1);
             setSubmitting(false);
             onHide();
           }}
@@ -148,7 +157,7 @@ export default function AddEventForm({ show, onHide }) {
               placeholder=""
             />
 
-            <button type="submit" className="authentication-button add-event-submission">Add Event</button>
+            <button type="submit" className="authentication-button edit-event-submission">Confirm Changes</button>
           </Form>
         </Formik>
       </Modal.Body>

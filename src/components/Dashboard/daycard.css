@@ -19,7 +19,7 @@
 
 .current-date {
   background-color: blue;
-  color: black;
+  color: var(--text);
   border-radius: 9999px;
 }
 

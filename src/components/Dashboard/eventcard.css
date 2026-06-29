@@ -6,7 +6,8 @@
   padding: 0.1rem 0;
   margin: 0.2rem auto;
   border: none;
-  border: 2px solid var(--bg-7);
+  border: 2px solid transparent;
+  color: var(--text);
 }
 
 .event-card:hover {
