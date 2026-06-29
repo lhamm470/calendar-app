@@ -13,12 +13,14 @@ import { ThemeContext } from "../../ThemeContext";
 export default function Dashboard() {
 
   const { theme } = useContext(ThemeContext);
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   
   return (
     <div className="page dashboard">
       <NavBar />
       <main>
-        {localStorage.getItem("currentUser") != "null" ? 
+        {currentUser ? 
           <Calendar /> :
           <span>Log in to view your dashboard content</span>
         }
